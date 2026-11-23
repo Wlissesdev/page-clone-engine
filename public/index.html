@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Page Clone Engine</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="logo">
+        <div class="mark">PC</div>
+        <div>
+          <strong>Page Clone Engine</strong>
+          <span>Product snapshot studio v0.4</span>
+        </div>
+      </div>
+
+      <nav>
+        <button class="nav active" data-view="new">+ Novo clone</button>
+        <button class="nav" data-view="projects">
+          Projetos
+          <span id="projectCount">0</span>
+        </button>
+      </nav>
+
+      <div class="side-note">
+        Captura páginas públicas de produto e recria interações locais.
+        Login, conta e checkout da origem continuam bloqueados.
+      </div>
+    </aside>
+
+    <main>
+      <section id="newView" class="view active">
+        <div class="hero">
+          <span class="eyebrow">CAPTURE • REBUILD • RESPONSIVE</span>
+          <h1>Clone visual adaptável em desktop, tablet e celular.</h1>
+          <p>
+            Esta versão captura três formatos da mesma página e reforça
+            galeria, título mobile, CEP, tabs, accordions, links de produto
+            e botões de compra.
+          </p>
+        </div>
+
+        <div class="card capture-card">
+          <label>URL pública do produto</label>
+
+          <div class="urlrow">
+            <input
+              id="url"
+              type="url"
+              placeholder="https://www.exemplo.com/produto/..."
+            >
+
+            <button
+              id="cloneBtn"
+              class="primary"
+            >
+              Analisar e clonar
+            </button>
+          </div>
+
+          <div class="settings">
+            <div>
+              <label>Nome do projeto</label>
+              <input
+                id="projectName"
+                placeholder="Ex.: Galaxy A07 - Americanas"
+              >
+            </div>
+
+            <div>
+              <label>Espera extra</label>
+              <select id="waitMs">
+                <option value="800">0,8 s</option>
+                <option value="1500" selected>1,5 s</option>
+                <option value="3000">3 s</option>
+                <option value="5000">5 s</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="buy-setting">
+            <div class="grow">
+              <label>Link dos botões Comprar / Avançar</label>
+
+              <input
+                id="buyUrl"
+                type="text"
+                placeholder="meusite.com/produto ou https://meusite.com/produto"
+              >
+
+              <small>
+                Aceita endereço com ou sem https://.
+                Comprar, avançar, continuar e finalizar vão para este link.
+              </small>
+            </div>
+
+            <div class="checks">
+              <label class="check">
+                <input
+                  id="captureAllFormats"
+                  type="checkbox"
+                  checked
+                >
+                <span>Desktop + tablet + celular</span>
+              </label>
+
+              <label class="check">
+                <input
+                  id="cleanOverlays"
+                  type="checkbox"
+                  checked
+                >
+                <span>Remover pop-ups comuns</span>
+              </label>
+            </div>
+          </div>
+
+          <div id="progress" class="progress hidden">
+            <div class="spinner"></div>
+
+            <div>
+              <strong>
+                Capturando os formatos e reconstruindo a página...
+              </strong>
+
+              <span>
+                Com os três formatos ativados, a captura pode demorar mais.
+              </span>
+            </div>
+          </div>
+
+          <div id="error" class="error hidden"></div>
+        </div>
+
+        <div id="result" class="hidden"></div>
+      </section>
+
+      <section id="projectsView" class="view">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">BIBLIOTECA LOCAL</span>
+            <h2>Projetos capturados</h2>
+          </div>
+
+          <button
+            id="refreshBtn"
+            class="ghost"
+          >
+            Atualizar
+          </button>
+        </div>
+
+        <div id="projectsGrid" class="projects-grid"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

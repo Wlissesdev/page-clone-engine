@@ -1,0 +1,20 @@
+# Dependências
+node_modules/
+npm-debug.log*
+
+# Ambiente
+.env
+.env.*
+
+# Saídas geradas (clones e capturas)
+data/projects/*
+!data/projects/.gitkeep
+
+# Backups locais
+backup-*/
+*.bak
+
+# Logs e sistema
+*.log
+.DS_Store
+Thumbs.db
